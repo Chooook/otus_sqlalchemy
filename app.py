@@ -19,14 +19,14 @@ db.init_app(app)
 migrate = Migrate(app, db)
 
 
-@app.cli.command('db-create-all')
-def db_create_all():
-    db.create_all()
-
-
-@app.cli.command('db-drop-all')
-def db_drop_all():
-    db.drop_all()
+# @app.cli.command('db-create-all')
+# def db_create_all():
+#     db.create_all()
+#
+#
+# @app.cli.command('db-drop-all')
+# def db_drop_all():
+#     db.drop_all()
 
 
 @app.route('/')

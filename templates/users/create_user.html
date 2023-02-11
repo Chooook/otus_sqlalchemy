@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% from 'macros/usernameform.html' import usernameform %}
+
+{% block title %}
+    New user
+{% endblock %}
+{% block body %}
+    <div>
+        <p>
+            {{ usernameform('Kennedy', 'Check') }}
+        </p>
+    </div>
+{% endblock %}

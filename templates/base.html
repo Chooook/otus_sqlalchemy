@@ -2,9 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>
+        {% block title %}
+            Base title
+        {% endblock %}
+    </title>
+    <style>
+        body {
+            {#background-color: azure;#}
+            font-family: SansSerif, 'serif';
+        }
+    </style>
+    {% block head %}
+
+    {% endblock %}
+        <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
 </head>
 <body>
-
+    <div class="container">
+        <p>
+            {% block body %}
+                # что за х**ня подчеркивает красным мой код???
+            {% endblock %}
+        </p>
+        <footer>
+            &copy chook 2023
+        </footer>
+    </div>
 </body>
 </html>

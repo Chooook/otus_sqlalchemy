@@ -1,8 +1,15 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request
 
 from models import User
 
 users_app = Blueprint('users', __name__)
+
+
+@users_app.get('/create_user')
+def create_user():
+    # username = request.args.get('username')
+    # User.create_user(username)
+    return render_template('users/create_user.html')
 
 
 @users_app.get('/')
