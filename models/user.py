@@ -14,7 +14,7 @@ class User(db.Model):
 
     id = Column(Integer, primary_key=True)
     username = Column(String(32), unique=True, nullable=False)
-    archived = Column(Boolean, default=False, server_default=false())
+    is_author = Column(Boolean, default=False, server_default=false())
     created_at = Column(DateTime,
                         default=datetime.utcnow,
                         server_default=func.now())
@@ -26,9 +26,18 @@ class User(db.Model):
     def __repr__(self):
         return self.__str__()
 
+    @classmethod
+    def create_user(cls, session, username: str, is_author: bool):
+        user = User(username=username, is_author=is_author)
+        session.add(user)
+        session.commit()
+        return user
+
+    # @classmethod
+    # def del_us
+
     if TYPE_CHECKING:
         query: Query
 
 
 # class UsersDAL:
-#
