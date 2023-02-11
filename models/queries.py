@@ -1,16 +1,10 @@
-from base import Base, Session
-from models import User
-# Как обойти "неиспользуемый импорт"??
-# Без него не создается таблица
-# Кроме решения с переносом Base в файл user
-# Тот же прикол, что и с фикстурами pytest
 
 
-def main():
-    Base.metadata.drop_all()
-    Base.metadata.create_all()
-
-    session = Session()
+# def main():
+    # Base.metadata.drop_all(engine)
+    # Base.metadata.create_all(engine)
+    #
+    # session = Session()
 
     # create_user(session, "john")
     # create_user(session, "sam")
@@ -26,7 +20,7 @@ def main():
     # get_users_by_username_match(session, "j")
     # get_users_by_username_match(session, "x")
 
-    session.close()
+    # session.close()
 
 
 # def create_user(session: SessionType, username: str) -> User:
@@ -74,7 +68,3 @@ def main():
 #         User.username.ilike(f"%{username_part}%")).all()
 #     print("user:", users)
 #     return users
-
-
-if __name__ == '__main__':
-    main()

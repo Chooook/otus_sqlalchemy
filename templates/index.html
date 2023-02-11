@@ -1,0 +1,23 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<main>
+    <div>
+        <code>User Agent: {{ request.headers.get('user-agent') }}</code>
+    </div>
+    <div>
+        <ul>
+            {% for i in [1,2,3]|sort %}
+                <li>{{ i }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</main>
+
+</body>
+</html>

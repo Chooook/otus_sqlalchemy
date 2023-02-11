@@ -1,29 +1,20 @@
 from datetime import datetime
+from typing import TYPE_CHECKING
 
-from sqlalchemy import (
-    Column,
-    Integer,
-    String,
-    Boolean,
-    DateTime,
-    false,
-    func,
-)
+from sqlalchemy import Column, Integer, String, Boolean, DateTime, false, func
 
-from base import Base
+from .db import db
+
+if TYPE_CHECKING:
+    from flask_sqlalchemy.query import Query
 
 
-class User(Base):
+class User(db.Model):
     __tablename__ = "users"
 
-    id = Column(Integer,
-                primary_key=True)
-    username = Column(String(32),
-                      unique=True,
-                      nullable=False)
-    archived = Column(Boolean,
-                      default=False,
-                      server_default=false())
+    id = Column(Integer, primary_key=True)
+    username = Column(String(32), unique=True, nullable=False)
+    archived = Column(Boolean, default=False, server_default=false())
     created_at = Column(DateTime,
                         default=datetime.utcnow,
                         server_default=func.now())
@@ -34,3 +25,10 @@ class User(Base):
 
     def __repr__(self):
         return self.__str__()
+
+    if TYPE_CHECKING:
+        query: Query
+
+
+# class UsersDAL:
+#
