@@ -1,12 +1,23 @@
-{% macro usernameform(placeholder, submittext='Submit') %}
-<form method="get">
-    <label for="username-input">Input username</label>
-        <input
-            id="username-input"
-            type="text"
-            name="username"
-            placeholder="{{ placeholder }}"
-        >
-    <button type="submit">{{ submittext }}</button>
+{% macro usernameform(form, placeholder, submittext='Submit') %}
+{% if form.errors %}
+    <div class="alert alert-danger">
+        <ul>
+            {% for name, errors in form.errors.items() %}
+                <li><strong>{{ name }}</strong></li>
+                    <ul>
+                        {% for error in errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
+    
+<form method="post">
+    {{ form.hidden_tag() }}
+    {{ form.username.label(class='form-label') }}
+    {{ form.username(size=20, class='form-control') }}
+    <button class="btn btn-primary my-3" type="submit">{{ submittext }}</button>
 </form>
 {% endmacro %}

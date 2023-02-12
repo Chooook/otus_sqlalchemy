@@ -1,5 +1,7 @@
 from flask import Flask, request, render_template
 from flask_migrate import Migrate
+from flask_wtf import CSRFProtect
+
 # from werkzeug.exceptions import NotFound
 
 from models import db
@@ -10,11 +12,13 @@ app = Flask(__name__)
 DB_URI = 'postgresql+pg8000://chook:passwd@localhost:5432/blog'
 app.config.update(
     SQLALCHEMY_DATABASE_URI=DB_URI,
-    SQLALCHEMY_ECHO=True,
+    SECRET_KEY='396674feb5b662c8943d798e8f6d3a52224c1c9381278351928170c37d718',
+    # SQLALCHEMY_ECHO=True,
 )
 
 app.register_blueprint(users_app, url_prefix='/users')
 
+csrf = CSRFProtect(app)
 db.init_app(app)
 migrate = Migrate(app, db)
 

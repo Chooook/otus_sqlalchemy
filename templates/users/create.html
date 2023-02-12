@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% from 'macros/usernameform.html' import usernameform %}
+
+{% block title %}
+    New user
+{% endblock %}
+{% block head %}
+    Create new user
+{% endblock %}
+{% block body %}
+    <div>
+        <p>
+            {{ usernameform(form, 'Kennedy', 'Check') }}
+        </p>
+    </div>
+    <p>
+        <a href="{{ url_for('users.list') }}">
+            Back to users list
+        </a>
+    </p>
+{% endblock %}

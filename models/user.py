@@ -20,7 +20,7 @@ class User(db.Model):
 
     def __str__(self):
         return (f"User(id={self.id}, username={self.username!r}, "
-                f"archived={self.archived}, created_at={self.created_at!r})")
+                f"created_at={self.created_at!r})")
 
     def __repr__(self):
         return self.__str__()
@@ -34,6 +34,5 @@ class User(db.Model):
 
     if TYPE_CHECKING:
         query: Query
-
 
 # class UsersDAL:

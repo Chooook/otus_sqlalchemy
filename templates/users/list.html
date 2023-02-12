@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Users list
+{% endblock %}
+{% block head %}
+    <h1>Users</h1>
+{% endblock %}
+{% block body %}
+    <ul>
+    {% if users %}
+        {% for user in users %}
+            <li>
+                <a href="{{ url_for('users.details', user_id=user.id) }}">
+                    {{ user.username }}
+                </a>
+            </li>
+        {% endfor %}
+    {% else %}
+        <h2>No users yet</h2>
+    {% endif %}
+    </ul>
+    <div>
+        <a href="{{ url_for('users.create') }}">
+            Create new user
+        </a>
+    </div>
+{% endblock %}

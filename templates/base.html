@@ -18,18 +18,24 @@
     {% endblock %}
         <link
             rel="stylesheet"
-            href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+            href="{{ url_for('static', filename='css/bootstrap.min.css') }}"
+        >
 </head>
 <body>
-    <div class="container">
-        <p>
-            {% block body %}
-                # что за х**ня подчеркивает красным мой код???
-            {% endblock %}
-        </p>
-        <footer>
-            &copy chook 2023
-        </footer>
-    </div>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="alert alert-info">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    {% block body %}
+
+    {% endblock %}
+    <footer>
+        &copy chook 2023
+    </footer>
 </body>
 </html>
